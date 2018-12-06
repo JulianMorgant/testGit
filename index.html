@@ -10,7 +10,7 @@
 
 <body>
 
-    <h1 id=indexId>$index</h1>
+    <h1 id=indexId></h1>
     <p>Lorem ipsum dolor sit amet.</p>
     <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde consectetur nam ducimus dolor recusandae,
         sapiente qui adipisci est numquam. Nulla sapiente voluptates similique obcaecati possimus harum quos tenetur
@@ -18,17 +18,28 @@
 </body>
 
 <script>
-        function entierAleatoire(min, max) {
-            return Math.floor(Math.random() * (max - min + 1)) + min;
+    function entierAleatoire(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+    function sleep(milliseconds) {
+        var start = new Date().getTime();
+        for (var i = 0; i < 1e7; i++) {
+            if ((new Date().getTime() - start) > milliseconds) {
+                break;
+            }
         }
-        //Utilisation
-        //La variable contient un nombre aléatoire compris entre 1 et 10
-        var entier = entierAleatoire(0, 1000);
-        var index = 0;
-        while (entier != entierAleatoire(0, 1000)) { index++ };
-        console.log(index);
-        var elem = document.getElementById('indexId');
+    }
+    //Utilisation
+    var elem = document.getElementById('indexId');
+    var entier = entierAleatoire(0, 1000000);
+    var index = 0;
+    while (entier != entierAleatoire(0, 1000000)) {
         elem.innerHTML = index;
-    </script>
+        index++;
+    }
+    console.log('occurences : ' + index);
+
+    elem.innerHTML = 'occurences : ' +  index;
+</script>
 
 </html>
